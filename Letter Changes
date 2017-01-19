@@ -1,0 +1,24 @@
+/* Letter Changes                                                                      
+*  Using the JavaScript language, have the function LetterChanges(str) take the str    
+*  parameter being passed and modify it using the following algorithm. Replace every   
+*  letter in the string with the letter following it in the alphabet                   
+*  (ie. c becomes d, z becomes a). Then capitalize every vowel in this new string      
+*  (a, e, i, o, u) and finally return this modified string.                            
+*/
+// input - string
+// output - string - every letter in the input string is replaced with the next letter and every vowel is capitalized.
+// process - iterate through the string letter by letter, for each letter find the ascii value and increment it by one,
+// convert it into String and add it to the newString.
+// if there is any vowel, capitalize it.
+function LetterChanges(str) { 
+  var newString = '';
+  var letter = '';
+  for (var i = 0; i < str.length ;i++) {
+    letter = String.fromCharCode(str[i].charCodeAt() + 1);
+    if (['a', 'e', 'i', 'o', 'u'].indexOf(letter) !== -1) {
+      letter = letter.toUpperCase();
+    }
+    newString += letter
+  }
+  return newString;
+}
