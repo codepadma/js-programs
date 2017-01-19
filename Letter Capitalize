@@ -1,0 +1,18 @@
+//input - string
+//output - string with capitalized first letter for each word
+function capitalizeFirstLetter(word) {
+  return word.split('').map(function(letter, index) {
+    if (index === 0) {
+      return letter.toUpperCase();
+    } 
+    return letter;
+  }).join('');
+}
+
+function LetterCapitalize(str) { 
+  str = str.split(' ');
+  str = str.map(function(word) {
+    return capitalizeFirstLetter(word);
+  });
+  return str.join(' '); 
+}
