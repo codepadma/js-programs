@@ -1,0 +1,24 @@
+//input - string - a sentence
+// output - string - the largest word in the string
+//assumptions - input is not empty
+// process - declare a maxCountAndWord object. Iterate through the words in the sentence, find the length of each word, if it is greater than maxCount variable in the maxCountAndWord object, update maxCount and maxWord variables.
+// At the end of the loop, return the maxWord
+
+function findLongestWord(words) {
+    var maxCountAndLongestWord = words.reduce(function(obj, word) {
+    if (obj.maxCount === undefined) {
+      obj.maxCount = word.length;
+      obj.longestWord = word;
+    } else if (word.length > obj.maxCount) {
+      obj.maxCount = word.length;
+      obj.longestWord = word;
+    }
+    return obj;
+  }, {});
+  return maxCountAndLongestWord.longestWord;
+}
+
+function LongestWord(sen) { 
+  var words = sen.split(' ');
+  return findLongestWord(words);
+}
