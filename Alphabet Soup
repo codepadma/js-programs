@@ -1,0 +1,17 @@
+/*  Alphabet Soup                                                                       
+*  Have the function AlphabetSoup(str) take the str string parameter being passed      
+*  and return the string with the letters in alphabetical order                        
+*  (ie. hello becomes ehllo). Assume numbers and punctuation symbols will not be       
+*  included in the string.                                          
+*/ 
+
+//input - string
+//ouput - string sorted in the alphabetical order
+//process - convert string into array of characters, sort the characters, render into a string and return
+function AlphabetSoup(str) { 
+  str = str.split('');
+  str.sort(function(a, b) {
+    return a > b;
+  });
+  return str.join(''); 
+}
