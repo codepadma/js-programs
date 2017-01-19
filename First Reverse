@@ -1,0 +1,7 @@
+//input - string
+//output - reverse of the string
+//process - converting the string into an array of letters, reverse , render it into a string and return
+function FirstReverse(str) { 
+  str = str.split('');
+  return str.reverse().join('');
+}
