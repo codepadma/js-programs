@@ -1,0 +1,54 @@
+/*  Arith Geo                                                                            
+*  Using the JavaScript language, have the function ArithGeo(arr) take the array of    
+*  numbers stored in arr and return the string "Arithmetic" if the sequence follows    
+*  an arithmetic pattern or return "Geometric" if it follows a geometric pattern. If   
+*  the sequence doesn't follow either pattern return -1. An arithmetic sequence is     
+*  one where the difference between each of the numbers is consistent, where as in a   
+*  geometric sequence, each term after the first is multiplied by some constant or     
+*  common ratio. Arithmetic example: [2, 4, 6, 8] and Geometric                        
+*  example: [2, 6, 18, 54]. Negative numbers may be entered as parameters, 0 will not  
+*  be entered, and no array will contain all the same elements.                   
+*/
+// input - array of numbers
+// output - string: 'Arithmetic' - if the difference between the numbers is the same
+                   'Geometric' - if each number is the result of multiplying by a constant of the previous
+// process - 1. Find if the numbers are arithmetic : Find the difference between the first two numbers. Loop through the numbers 
+                and check if the difference is the same. If yes, return 'Arithmetic'
+             2. Find if the numbers are Geometric: Divide the second number by first, find the constant. Loop through the numbers and 
+             check if the constant between the number and the next is the same constant. If yes, return 'Geometric'
+             3. Else, return -1
+                
+function isArith(numbers) {
+  var diff = numbers[1] - numbers[0];
+  console.log('diff = ' + diff);
+  return numbers.every(function(num, index) {
+    console.log('num = ' + num);
+    console.log('numbers[index + 1]=' + numbers[index + 1]);
+    if (index !== numbers.length - 1) {
+      return (numbers[index + 1] - num) === diff;
+    }
+    return true;
+  });
+}
+
+function isGeo(numbers) {
+  var constant = numbers[1] / numbers[0];
+  console.log('constant = ' + constant);
+  return numbers.every(function(num, index) {
+    if (index !== numbers.length - 1) {
+      return (numbers[index + 1] / num) === constant;
+    }
+    return true;
+  });
+}
+
+function isArithGeo(numbers) {
+  if (isArith(numbers)) {
+    return 'Arithmetic';
+  } else if (isGeo(numbers)) {
+    return 'Geometric';
+  } else {
+    return -1;
+  }
+}
+
