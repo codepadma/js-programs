@@ -1,0 +1,18 @@
+/* Vowel Count                                                                         
+*  Using the JavaScript language, have the function VowelCount(str) take the str       
+*  string parameter being passed and return the number of vowels the string contains   
+*  (ie. "All cows eat grass" would return 5). Do not count y as a vowel for this       
+*  challenge.        
+*/
+//input - string
+//output - number of vowels in the string
+// process - iterate through the string, for each letter, increment the vowel count, if the letter is a vowel.
+function findVowelCount(str) {
+  str = str.toLowerCase();
+  return str.split('').reduce(function(count, letter) {
+    if(['a', 'e', 'i', 'o', 'u'].indexOf(letter) !== -1) {
+      count += 1;
+    }
+    return count;
+  }, 0);
+}
