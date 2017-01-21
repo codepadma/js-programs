@@ -1,0 +1,36 @@
+/**  Array Addition I                                                                    
+*  Using the JavaScript language, have the function ArrayAdditionI(arr) take the array 
+*  of numbers stored in arr and return the string true if any combination of numbers   
+*  in the array can be added up to equal the largest number in the array, otherwise    
+*  return the string false. For example: if arr contains [4, 6, 23, 10, 1, 3] the      
+*  output should return true because 4 + 6 + 10 + 3 = 23. The array will not be empty, 
+*  will not contain all the same elements, and may contain negative numbers
+*/
+
+// input - array of numbers
+// ouput - boolean - true: if the numbers in the array add up to the maximum no in the array
+//                -false : if the numbers in the array do not add up to the maximum no in the array
+// process - Find the maximum number in the array of numbers. Remove it from the array.
+//         - Add all the remaining numbers and check if the sum = maximum number in the array. 
+
+function findMaxNumber(numbers) {
+  return numbers.reduce(function(max, number) {
+    return max > number ? max : number;
+  }, 0);
+}
+
+function findSum(numbers) {
+  return numbers.reduce(function(a, b) {
+    return a + b;
+  });
+}
+
+function arrayAddition(numbers) {
+  var maxNo = findMaxNumber(numbers);
+  numbers.splice(numbers.indexOf(maxNo), 1);
+  var sum = findSum(numbers);
+  if (maxNo === sum) {
+    return 'true';
+  }
+  return 'false';
+}
