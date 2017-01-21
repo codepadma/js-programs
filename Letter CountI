@@ -1,0 +1,42 @@
+// input - String
+// output - word containing the max repeated letters
+// process - Break the string into words.
+//         - For each word, find the number of repeated letters.
+//         - Compare the no of repeated letters of all the words and return the word which has the maximum no of repeated letters.
+
+function getLetterCountObj(word) {
+  return word.split('').reduce(function(obj, letter) {
+   if (obj[letter] === undefined) {
+     obj[letter] = 1;
+     return obj;
+   } 
+   obj[letter] = obj[letter] + 1;
+   return obj;
+  }, {});
+}
+
+function findMaxLetterCount(letterCountObj) {
+  var keys = Object.keys(letterCountObj);
+  var maxCount = 0;
+  for (var i in letterCountObj) {
+    if (letterCountObj[i] > maxCount) {
+      maxCount = letterCountObj[i];
+    }
+  }
+  return maxCount;
+}
+
+function letterCount1(str) {
+  var words = str.split(' ');
+  var maxCount = 0;
+  var maxWord = '';
+  words.forEach(function(word) {
+    var letterCountObj = getLetterCountObj(word);
+    var maxLetterCount = findMaxLetterCount(letterCountObj)
+    if (maxLetterCount > maxCount) {
+      maxCount = maxLetterCount;
+      maxWord = word;
+    }
+  });
+  return maxWord;
+}
