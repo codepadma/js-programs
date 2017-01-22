@@ -1,0 +1,28 @@
+/*Second Great Low                                                                    
+*  Using the JavaScript language, have the function SecondGreatLow(arr) take the array 
+*  of numbers stored in arr and return the second lowest and second greatest numbers,  
+*  respectively, separated by a space. For example: if arr contains                    
+*  [7, 7, 12, 98, 106] the output should be 12 98. The array will not be empty and     
+*  will contain at least 2 numbers. It can get tricky if there's just two numbers!  */
+
+// input - an array of numbers
+// output - the second greatest and the second lowest numbers seperated by a space.
+// if the array has only 2 numbers, then sort and return the numbers
+// process - sort the numbers. we can return the second number and the last but one number
+
+function sortNumbers(numbers) {
+  return numbers.sort(function(a, b) {
+    return a - b;
+  });
+}
+
+function secondGreatLow(numbers) {
+  // check is the length is 2. sort and return the sorted numbers
+  if (numbers.length === 2) {
+    numbers = sortNumbers(numbers);
+    return numbers.join(' ');
+  }
+  // else, sort and return the second and the last but one number.
+  numbers = sortNumbers(numbers);
+  return [numbers[1], numbers[numbers.length - 2]].join(' ');
+}
