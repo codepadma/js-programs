@@ -1,0 +1,23 @@
+/* Swap Case                                                                           
+*  Using the JavaScript language, have the function SwapCase(str) take the str        
+*  parameter and swap the case of each character. For example: if str is "Hello World" 
+*  the output should be hELLO wORLD. Let numbers and symbols stay the way they are.  
+*/
+
+//Swap case
+// input - string
+// output - string with the case of the letters swapped
+// process - loop through each letter of the string, check for the ascii code of the letter, if it is between (65 - 90: uppercase), then convert the letter to lowercase and add it to the new string, if it is between (97 - 122), then convert the letter to uppercase and add it to the new string, else add the character as it is to the new string
+function swapCase(str) {
+  return str.split('').reduce(function(result, letter) {
+    var code = letter.charCodeAt();
+    if (code >= 65 && code <= 90) {
+      result += letter.toLowerCase();
+    } else if (code >= 97 && code <= 122) {
+      result += letter.toUpperCase();
+    } else {
+      result += letter;
+    }
+    return result;
+  }, '');
+}
