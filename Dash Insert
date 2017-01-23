@@ -1,0 +1,19 @@
+
+/*  Dash Insert                                                                         
+*  Using the JavaScript language, have the function DashInsert(str) insert dashes      
+*  ('-') between each two odd numbers in str. For example: if str is 454793 the        
+*  output should be 4547-9-3. Don't count zero as an odd number.   
+*/
+
+// input - string 
+// ouput - string with a ash inserted between two odd numbers
+// process - loop through the string, check for odd numbers at the index and the next index, if yes, add '-' in the string. return the final string
+function dashInsert(str) {
+  return str.split('').reduce(function(result, b, index) {
+    result += b;
+    if (b % 2 !== 0 && str[index + 1] % 2 !== 0 && index !== str.length - 1) {
+      result += '-';
+    }
+    return result;
+  }, '');
+}
