@@ -1,0 +1,37 @@
+/*  Number Addition                                                                     
+*  Using the JavaScript language, have the function NumberSearch(str) take the str     
+*  parameter, search for all the numbers in the string, add them together, then        
+*  return that final number. For example: if str is "88Hello 3World!" the output       
+*  should be 91. You will have to differentiate between single digit numbers and       
+*  multiple digit numbers like in the example above. So "55Hello" and "5Hello 5"       
+*  should return two different answers. Each string will contain at least one letter   
+*  or symbol.
+*/
+
+// input - string
+// output - number - result of addition of the numbers
+// process - 1. get all the numbers in a numbers array : loop through the string, if the character is not a number, then skip. otherwise join the adjacent numbers and add it into a numbers array.
+//           2. add the numbers to get the result
+
+function getNumbers(str) {
+  var num = '';
+  var numbers = [];
+  chars.forEach(function(a, index) {
+    if (!isNaN(a)) {
+      num += a.trim();
+    }
+    if (num !== '' && isNaN(chars[index + 1])) {
+      numbers.push(parseInt(num));
+      num = '';
+    }
+  });
+  console.log(numbers);
+  return numbers;
+}
+
+function numberAddition(str) {
+  var numbers = getNumbers(str);
+  return numbers.reduce(function(a, b) {
+    return a + b;
+  }, 0);
+}
