@@ -22,6 +22,14 @@ function duplicateCount(text){
   }
   return count;
 }
+//alternate solution
+/*
+function duplicateCount(text){
+  return text.toLowerCase().split('').filter(function(val, i, arr){
+    return arr.indexOf(val) !== i && arr.lastIndexOf(val) === i;
+  }).length;
+}
+*/
 
 function assertEquals(actual, expected, testName) {
   if (actual === expected) {
