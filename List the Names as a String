@@ -1,0 +1,27 @@
+/* Given: an array containing hashes of names
+
+* Return: a string formatted as a list of names separated by commas except for the last two names, 
+* which should be separated by an ampersand.
+*/
+
+function list(names){
+  var namesString = '';
+  names.forEach(function(nameObj, index) {
+    if (index === names.length - 2) {
+      namesString += nameObj.name + ' & ';
+    } else if (index !== names.length - 1) {
+      namesString += nameObj.name + ', ';
+    } else { 
+      namesString +=  nameObj.name;
+    }
+  });
+  return namesString;
+}
+
+function assertEquals(actual, expected, testName) {
+  if (actual === expected) {
+    return 'passed';
+  } else {
+    return 'FAILED ' + testName + ' Expected ' + expected + ', but got ' + actual;
+  }
+}
