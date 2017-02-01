@@ -1,0 +1,6 @@
+function SumOfNumbers(numbers) {
+  if (numbers.length === 1) {
+    return numbers[0];
+  }
+  return numbers.pop() + sumOfNumbers(numbers);
+}
