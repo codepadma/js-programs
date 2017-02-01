@@ -1,0 +1,17 @@
+function sumDigits(num) {
+  if (num < 10) {
+    return num;
+  }
+  var reminder = num % 10;
+  return reminder + Math.floor(sumDigits(num / 10));
+}
+
+function assertEquals(actual, expected, testName) {
+  if (actual === expected) {
+    return 'passed';
+  } else {
+    return 'FAILED ' + testName + ' Expected ' + expected + ', but got ' + actual;
+  }
+}
+
+assertEquals(sumDigits(123), 6, 'Sum the Digits Passed recursively');
