@@ -1,0 +1,16 @@
+function reverseWord(word) {
+  if (word.length === 1) {
+    return word;
+  }
+  return reverseWord(word.substring(1)) + word.charAt(0);
+}
+
+function assertEquals(actual, expected, testName) {
+  if (actual === expected) {
+    return 'passed';
+  } else {
+    return 'FAILED ' + testName + ' Expected ' + expected + ', but got ' + actual;
+  }
+}
+
+assertEquals(reverseWord('practise'), 'esitcarp', 'reverses a word');
