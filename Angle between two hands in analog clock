@@ -1,0 +1,16 @@
+// Find the smallest angle between the hour hand and the minute hand in an analog clock
+// Find angle per hour for hour hand * hour 
+// Find angle per min for hour hand * minute
+// Add the above two to get the angle of the hour hand
+// Find angle per minute for minute hand * minute
+// Find the difference between hourangle and minute angle.
+
+function findAngle(hour, minute) {
+  var angleHourHand = hour * 30 + ((30 / 60) * minute);
+  var angleMinuteHand = minute * 6;
+  var diff = Math.abs(angleHourHand - angleMinuteHand);
+  console.log(diff);
+  return 360 - diff < diff ? 360 - diff : diff;
+}
+
+findAngle(2, 45);
