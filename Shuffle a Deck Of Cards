@@ -1,0 +1,32 @@
+
+//input - a deck of cards (array)
+//ouput - shuffled deck of cards (array)
+//process - Traverse the deck of cards from the end, get a random position and exchange the last card with the card at the random position
+// Repeat this step for all the cards.
+var cards = [];
+function getDeckOfCards() {
+  for (let i = 0; i <= 52; i ++) {
+    cards.push(i);
+  }
+  return cards;
+}
+
+function exchangeCardPositions(cards, position1, position2) {
+  var temp = [];
+  temp.push(cards[position1]);
+  cards[position1] = cards[position2];
+  cards[position2] = temp[0];
+  return cards;
+}
+
+function shuffleCards(cards, min, max) {
+  var randomNumber = -1;
+  for (let i = 52; i >= 0; i--) {
+    randomNumber = Math.floor(Math.random() * (max - min)) + min;
+    cards = exchangeCardPositions(cards, randomNumber, i);
+  }
+}
+
+cards = getDeckOfCards();
+shuffleCards(cards, 0, 52);
+console.log(cards);
