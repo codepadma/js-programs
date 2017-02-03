@@ -1,0 +1,41 @@
+/* Start with two arrays of strings, a and b, each in alphabetical order, 
+ * possibly with duplicates. Return the count of the number of strings which 
+ * appear in both arrays. The best "linear" solution makes a single pass over 
+ * both arrays, taking advantage of the fact that they are in alphabetical 
+ * order.
+ */
+ 
+  var a = ['a', 'b', 'c', 'x']
+ var b = ['b', 'x']
+ 
+ // input - two string arrays - strings are in alphabetical order
+ // output - count of the number of strings which appear in both the arrays
+ // process - Maintain a counter. Traverse through one of the arrays. If the string is present at any of the indexes in the other array, increment the counter. Maintain an array which has the letter present in both the arrays.
+ 
+ function getCommonStrings(arrToTraverse, arrToCompare) {
+   return arrToTraverse.reduce(function(commonStrings, str, index) {
+     if (arrToCompare.indexOf(str) != -1 && commonStrings.indexOf(str) == -1) {
+       commonStrings.push(str);
+     }
+     return commonStrings;
+   }, []);
+ }
+ 
+ function findNumberOfCommonStrings(a, b) {
+   var arrToTraverse = a.length < b.length ? a : b;
+   var arrToCompare = a.length > b.length ? a : b;
+   var commonStrings = getCommonStrings(arrToTraverse, arrToCompare);
+   return commonStrings.length;
+ }
+ 
+ function assertEquals(actal, expected, testName) {
+   if (actual === expected) {
+     return 'passed';
+   } else {
+     return 'FAILED ' + testName + ' Expected ' + expected + ', but got ' + actual;
+   }
+ }
+ 
+ var actual = findNumberOfCommonStrings(a, b);
+ assertEquals(actual, 2, 'find number of common strings');
+ 
