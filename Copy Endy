@@ -1,0 +1,51 @@
+/* We'll say that a positive int n is "endy" if it is in the range 
+ * 0..10 or 90..100 (inclusive). Given an array of positive ints, return a 
+ * new array of length "count" containing the first endy numbers from the 
+ * original array. Decompose out a separate isEndy(int n) method to test if a 
+ * number is endy. The original array will contain at least "count" endy 
+ * numbers.
+ */
+ 
+ /* We'll say that a positive int n is "endy" if it is in the range 
+ * 0..10 or 90..100 (inclusive). Given an array of positive ints, return a 
+ * new array of length "count" containing the first endy numbers from the 
+ * original array. Decompose out a separate isEndy(int n) method to test if a 
+ * number is endy. The original array will contain at least "count" endy 
+ * numbers.
+ */
+ 
+ // input - array of positive integers
+ // ouput - array - containing the endy numbers from the original array
+ // process - 1. Traverse through the array of integers. For each number, [check if it is between 0 - 10 or 90 - 100.] - call helper function isEndy. If it is true, copy the number to the endyNumbers array.
+ // 2. Repeat the process for all the numbers. Return the endyNumbers array.
+ 
+ 
+ function isEndy(number) {
+   return (number >=0 && number <=10) || (number >= 90 && number <= 100);
+ }
+ 
+ function getEndyNumbers(numbers) {
+   // 1. Declare a new endyNumbers array. traverse the array
+   // 2. for each number, call the helper isEndy
+   // 3. If yes, add the number to the endyNumbers array.
+   // 4. return endyNumbers
+   return numbers.reduce(function(endyNumbers, number) {
+     if (isEndy(number)) {
+       endyNumbers.push(number);
+     }
+     return endyNumbers;
+   }, []);
+ }
+ 
+ function assertArrayEquals(actual, expected, testName) {
+   var isLengthEqual = actual.length === expected.length;
+   if (isLengthEqual && actual.every(function(number, index) {
+     return number === expected[index];
+   })) {
+     return 'passed';
+   } else {
+     return 'FAILED ' + testName + ' Expected ' + expected + ', but got ' + actual;
+   }
+ }
+ 
+ assertArrayEquals(getEndyNumbers([5, 67, 78, 90, 100]), [5, 90, 100], 'get the number of endy numbers');
