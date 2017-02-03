@@ -1,0 +1,26 @@
+/* We'll say that a positive int divides itself if every digit in the number 
+ * divides into the number evenly. So for example 128 divides itself since 
+ * 1, 2, and 8 all divide into 128 evenly. We'll say that 0 does not divide 
+ * into anything evenly, so no number with a 0 digit divides itself.
+ */
+ 
+ // input  - number
+ // output - true - if every digit divides the number / false - otherwise
+ // process - Take each digit from the number. If the digit divides the number, return true, else false. Repeat this for all the digits
+ 
+ function doesDigitsDivideItself(number) {
+   // make a loop to traverse through each digit
+   // Check number is divisible by the digit
+   while (number !== 0) {
+     if (number % (number % 10) !== 0) {
+       return false;
+     }
+     number = Math.floor(number / 10);
+   }
+   if (number === 0) {
+     return false;
+   }
+   return true;
+ }
+ 
+ doesDigitsDivideItself(120);
