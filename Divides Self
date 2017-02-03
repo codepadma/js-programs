@@ -11,14 +11,15 @@
  function doesDigitsDivideItself(number) {
    // make a loop to traverse through each digit
    // Check number is divisible by the digit
+   var val = number;
+   if (number === 0) {
+     return false;
+   }
    while (number !== 0) {
-     if (number % (number % 10) !== 0) {
+     if (val % (number % 10) !== 0) {
        return false;
      }
      number = Math.floor(number / 10);
-   }
-   if (number === 0) {
-     return false;
    }
    return true;
  }
