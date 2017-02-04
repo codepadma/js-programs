@@ -1,0 +1,29 @@
+/* The "key" array is an array containing the correct answers to an exam, 
+ * like {"a", "a", "b", "b"}. the "answers" array contains a student's 
+ * answers, with "?" representing a question left blank. The two arrays are 
+ * not empty and are the same length. Return the score for this array of 
+ * answers, giving +4 for each correct answer, -1 for each incorrect answer, 
+ * and +0 for each blank answer.
+ */
+ 
+ // input - key array, answers array
+ // output - score.(score= +4 for  correct answer, -1 for incorrect answer and +0 for blank answer)
+ // assumption - the two arrays are not empty and are of the same length
+ // process - Maintain a score variable. Traverse through one of the arrays, 
+ //           1. Check if the element in the key array is '?', If yes add 0 to the score. If the element in the keys array is the same as the element at the same index in the answers array, add +4 to the score. If not, add -1 to the score.
+ //           Return score
+ 
+ function getScore(key, answers) {
+   return key.reduce(function(score, theKey, index) {
+     if (answers[index] === '?') {
+       score += 0;
+     } else if (theKey === answers[index]) {
+       score += 4;
+     } else {
+       score -= 1;
+     }
+     return score;
+   }, 0);
+ }
+ 
+ getScore(['a', 'b', 'c'], ['a', '?', 'd']);
