@@ -1,0 +1,23 @@
+/* Given 2 arrays that are the same length containing strings, compare the 
+ * 1st string in one array to the 1st string in the other array, the 2nd to 
+ * the 2nd and so on. Count the number of times that the 2 strings are 
+ * non-empty and start with the same char. The strings may be any length, 
+ * including 0.
+ */
+ 
+ // input - 2 arrays of same length containing strings
+ // output - Compare each string in first array to the string at the same index in the next array. Count the number f times the 2 strings are non-empty and start with the same character.
+ // process - Maintain a counter. 
+ //           Traverse one of the arrays, compare the string in one array to the string at the same index in the other array. 
+ //           If its non-empty and start with the same character, increment the counter.
+ 
+ function countStringsWithSameChar(a, b) {
+   return a.reduce(function(counter, str, index) {
+     if ((str !== '') && b[index] !== '' && str.charAt(0) === b[index].charAt(0)) {
+       counter += 1;
+     }
+     return counter;
+   }, 0);
+ }
+ 
+ countStringsWithSameChar(['cox', 'sun'], ['sara', 'abby']);
