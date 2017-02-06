@@ -1,0 +1,45 @@
+
+// input - number n, and a number p (power)
+// ouput - positive integer k.
+// Eg: 695, 2 -> 6 ^ 2 + 9 ^ 3 + 5 ^ 4 = sum ==> 695 * k  
+// process - Split the number into digits, traverse through the digits and find the sum of the powers of the digits.
+// find k: number / sum and return k
+
+function digPow(num, pow) {
+  // split the number into digits.
+  // Traverse through the digits. For each digit, find Math.pow(digit, pow) and add it to the sum. Increase pow by 1 for next digit.
+  var sum = num.toString().split('').reduce(function(sum, digit) {
+    return sum + Math.pow(parseInt(digit), pow++);
+  }, 0);
+  return (sum % num === 0) ? sum / num : -1;
+}
+
+digPow(695, 2);
+
+/*The goal of this exercise is to convert a string to a new string where each character in the new string is '(' if that character appears only once in the original string, or ')' if that character appears more than once in the original string. Ignore capitalization when determining if a character is a duplicate.
+
+Examples:
+
+"din" => "((("
+
+"recede" => "()()()"
+
+"Success" => ")())())"
+
+"(( @" => "))(("
+*/
+
+// input - string
+// ouput - string, '(' if the character appears once in input or ')' if the character appears more than once in input
+// assumption - cases of the letters are ignored
+// Eg: "din" => "((("
+// process - 1. Convert the string into lowercase
+//           2. Traverse through the string, character by character. For each character, check, if it occurs more than once. [string.indexOf('character') !== string.lastIndexOf('character')] -> the character appears more than once. If yes, add ')' , else add '('. Continue step 2 for each character
+// Return the output string
+
+function duplicateEncode(str) {
+  str = str.toLowerCase();
+  return str.split('').reduce(function(encodedString, character) {
+    return (str.indexOf(character) !== str.lastIndexOf(character)) ? encodedString + ')' : encodedString + '(';
+  }, '');
+}
