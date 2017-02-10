@@ -1,0 +1,14 @@
+/* this recursive function will take an array of words, 
+* and return an array of those words, uppercased.
+*/
+
+function toUpperArray(words) {
+  if (words.length === 0) {
+    return [];
+  }
+  var head = words[0].toUpperCase();
+  var tail = words.slice(1);
+  return [head].concat(toUpperArray(tail));
+}
+
+toUpperArray(['padma', 'chacha', 'ananth']);
