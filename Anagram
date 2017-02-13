@@ -1,0 +1,13 @@
+// anagram
+
+function sort(word) {
+  return word.split('').sort().join('');
+}
+function isAnagram(str, list) {
+ str = sort(str.toLowerCase());
+ return list.filter(function(word) {
+   return sort(word.toLowerCase()) === str;
+ });
+}
+
+isAnagram('abba', ['baab', 'abcd', 'bbaa', 'dada']);
