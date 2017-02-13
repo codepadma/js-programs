@@ -1,0 +1,33 @@
+/*
+ * input - String
+ * output - true - if the braces are valid, false otherwise
+ * proces - 1. Convert the string into array of braces. Initialize an array called stack.
+ *          2. For each brace, if the brace is (, push this into stack.
+ *             If it is ), pop the last element from the stack.
+ *          3. At the end, is the stack has no elements, then the braces are balanced, return true, else false
+ */
+function validParentheses(parens){
+  var stack = [];
+  var isValid = true;
+  parens.split('').forEach(function(brace) {
+    if (brace === '(') {
+      stack.push(brace);
+    } else if (stack.length > 0 && brace === ')'){
+      stack.pop();
+    }
+    else {
+      isValid = false;
+    }
+  });
+  return isValid && stack.length === 0;
+}
+
+function assertEquals(actual, expected, testName) {
+  if (actual === expected) {
+    return 'passed';
+  } else {
+    return 'FAILED: [' + testName + '] Expected ' + expected + ', but got ' + actual;
+  }
+}
+
+assertEquals(validParentheses(')'), false, 'Valid Paranthesis');
